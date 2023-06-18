@@ -1,0 +1,36 @@
+.pagination {
+  display: flex;
+  justify-content: space-around;
+  align-content: center;
+  gap: 10px;
+  padding: 1em 0;
+  .pages {
+    background-color: transparent;
+  }
+  .limit-selector {
+    display: flex;
+    background-color: transparent;
+    align-items: center;
+
+    select {
+      background-color: transparent;
+      padding: 2px;
+    }
+  }
+}
+.pages-numbers {
+  display: flex;
+  gap: 10px;
+
+  .item {
+    border-radius: 3px;
+    padding: 4px;
+
+    &.page-item {
+      &.active {
+        background-color: #000;
+        color: #fff;
+      }
+    }
+  }
+}

@@ -1,0 +1,57 @@
+<div class="device-container">
+  <div class="device" *ngIf="device">
+    <form class="device-edit-form" [formGroup]="deviceForm" (ngSubmit)="onSubmit()">
+
+      <div class="form-group">
+        <label class="label" for="name">Name:</label>
+        <input
+          class="input"
+          type="text"
+          id="name"
+          name="name"
+          formControlName="deviceName"
+          required
+        />
+      </div>
+
+      <div class="form-group">
+        <label class="label" for="tag">Tags:</label>
+        <div class="tags">
+          <div formArrayName="deviceTags" class="input tags-box" >
+            <div *ngFor="let tagForm of deviceTags.controls; let i = index" class="tag">
+              <input
+              class="tag-input"
+                type="hidden"
+                [formControlName]="i.toString()"
+                [attr.id]="'tag-' + i"
+                [attr.name]="'tag-' + i"
+                [value]="tagForm.value"
+                readonly
+              />
+              <span>{{tagForm.value }}</span>
+              <span class="remove-icon" (click)="removeTag(tagForm.value)">&#10006;</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label class="label" for="description">Description:</label>
+        <textarea
+          class="textarea input"
+          type="text"
+          id="description"
+          name="description"
+          formControlName="deviceDescription"
+          rows="10"
+          cols="50"
+        ></textarea>
+      </div>
+
+      <div class="buttons">
+        <button class="cancel form-button" (click)="cancelEdit()">Cancel</button>
+        <button type="submit" class="form-button">Save</button>
+      </div>
+    </form>
+  </div>
+</div>

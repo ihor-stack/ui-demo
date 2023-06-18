@@ -1,0 +1,22 @@
+<div class="pagination">
+
+  <div class="pages">
+    <div class="pages-numbers">
+      <span class="page-prev item" (click)="changePage.emit(currentPage === 1 ? 1 : currentPage - 1)"><</span>
+      <span *ngFor="let page of pages" class="page-link item" [ngClass]="{'page-item': true, 'active': currentPage === page }" (click)="changePage.emit(page)">{{ page }}</span>
+      <span class="page-next item" (click)="changePage.emit(currentPage === pages.length ? currentPage - 1 : pages.length)">></span>
+    </div>
+  </div>
+
+  <div class="limit-selector">
+    <span>Select:</span>
+    <select #limit (change)="onSelected(limit.value)">
+      <option value="10" default >10</option>
+      <option value="20">20</option>
+      <option value="40">40</option>
+    </select>
+  </div>
+
+</div>
+
+

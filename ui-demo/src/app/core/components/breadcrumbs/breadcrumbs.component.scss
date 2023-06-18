@@ -1,0 +1,9 @@
+.breadcrumb-link{
+  color: #000;
+  text-decoration: none;
+  text-transform: capitalize;
+
+  &.active{
+    font-weight: bold;
+  }
+}

@@ -1,0 +1,39 @@
+<div class="list">
+  <table>
+    <thead>
+      <tr>
+        <th scope="col">Name</th>
+        <th scope="col">Tags</th>
+        <th scope="col">**</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let device of devices">
+        <td data-label="Name">
+          <app-nav-link
+            [link]="device.name"
+            [linkName]="device.name"
+          ></app-nav-link>
+        </td>
+        <td data-label="tags" class="tags">
+          <span *ngFor="let tag of device.tags | tagsTransform" class="tag">{{ tag }}</span>
+        </td>
+        <td data-label="mark">
+          <span
+            [ngStyle]="{
+              'background-color': device.description | descriptionIndicator
+            }"
+            class="mark"
+          ></span>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+  <app-pagination
+    [currentPage]="currentPage"
+    [limit]="limit"
+    [total]="total"
+    (changePage)="changePage($event)"
+    (changeLimit)="changeLimit($event)"
+  ></app-pagination>
+</div>
